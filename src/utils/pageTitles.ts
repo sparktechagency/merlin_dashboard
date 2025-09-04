@@ -26,6 +26,9 @@ export const pageTitles: Record<string, PageTitleConfig> = {
   "/regional": {
     title: "Regional Administrators",
   },
+  "/requestedPhoto": {
+    title: "Requested photos",
+  },
 
   "/donations": {
     title: "Donations",
