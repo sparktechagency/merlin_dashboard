@@ -16,11 +16,16 @@ export default function DashboardLayout({
     return (
         <SidebarProvider>
             <AppSidebar />
-            <div className="w-full rounded mx-4 ">
-                <SidebarTrigger />
-                <SiteHeader />
-                {children}
+            <div className="bg-[#f6f6f6] w-full rounded  ">
+                <div className="mx-4">
+                    <SidebarTrigger />
+                    <SiteHeader />
+                    {children}
+                </div>
             </div>
         </SidebarProvider>
     );
 }
+
+// sidebar menu icon here--->
+// <SidebarTrigger /> ------ {/* <Menu /> */}
