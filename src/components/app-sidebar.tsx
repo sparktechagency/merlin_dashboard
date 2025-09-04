@@ -17,7 +17,6 @@ import {
   DashboardIcon,
   DonationsIcon,
   RegionalIcon,
-  SettingIcon,
   UsersIcon,
 } from "./custom-icons"
 import { useRouter } from "next/navigation"
