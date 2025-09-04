@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
 import {
+  ChangePasswordIcon,
   DashboardIcon,
   DonationsIcon,
   RegionalIcon,
@@ -65,7 +66,7 @@ export const data = {
           title: "Change Password",
           description: "Update Account Security Credentials",
           url: "changePassword",
-          icon: SettingIcon,
+          icon: ChangePasswordIcon,
         },
       ],
     },
