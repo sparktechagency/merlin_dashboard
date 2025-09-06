@@ -121,6 +121,7 @@ export default function UserPage() {
         open={isDeleteModal}
         setIsOpen={setIsDeleteModal}
         className={"p-0 max-h-[0vh]"}
+         bgColor={"bg-[#004E8F]"}
         maxWidth={"md:!max-w-[30vw]"}
       >
         <DeleteUserModal

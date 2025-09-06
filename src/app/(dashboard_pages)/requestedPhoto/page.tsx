@@ -1,7 +1,10 @@
 
 "use client";
 
+import CustomModal from "@/components/modal/CustomModal";
+import RejectPhotoModal from "@/components/modal/requestedPhotoModal/rejectPhotoModal";
 import Image from "next/image";
+import { useState } from "react";
 
 interface CardData {
   id: number;
@@ -100,17 +103,25 @@ const cards: CardData[] = [
 
 const handleBackRegionalClick = () => {
   history.back();
-} 
+}
 
 
 export default function RequestedPhotoPage() {
+  const [rejectPhotoModalOpen, setRejectPhotoModalOpen] = useState(false);
+
+
+  const handleRejectPhoto = (id: number) => {
+    console.log('reject modal id', id)
+    setRejectPhotoModalOpen(!rejectPhotoModalOpen);
+  }
+
   return (
     <div className="py-4">
       <div className="p-4">
-        <svg 
-         onClick={handleBackRegionalClick}
-         className="cursor-pointer"
-        width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          onClick={handleBackRegionalClick}
+          className="cursor-pointer"
+          width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 9.15707H4.47022L9.72518 14.3639L8.07396 16L0 8L8.07396 0L9.72518 1.6361L4.47022 6.84293H18V9.15707Z" fill="black" />
         </svg>
 
@@ -134,7 +145,7 @@ export default function RequestedPhotoPage() {
 
               {/* Action Buttons */}
               <div className="flex items-center justify-between px-4 py-2  bg-[#cbc7c7]">
-                <button className="p-1 rounded-full hover:bg-green-100">
+                <button className="p-1 rounded-full cursor-pointer">
                   <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.39417 14L0.75 7.36383L2.41104 5.70478L7.39417 10.6819L18.089 0L19.75 1.65904L7.39417 14Z" fill="#01AA20" />
                   </svg>
@@ -143,7 +154,9 @@ export default function RequestedPhotoPage() {
 
                 <div className="h-8 w-px bg-gray-50 mx-2"></div>
 
-                <button className="p-1 rounded-full hover:bg-red-100">
+                <button
+                  onClick={() => handleRejectPhoto(card.id)}
+                  className="p-1 rounded-full cursor-pointer">
                   <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.75 1H11.25L10.25 0H5.25L4.25 1H0.75V3H14.75M1.75 16C1.75 16.5304 1.96071 17.0391 2.33579 17.4142C2.71086 17.7893 3.21957 18 3.75 18H11.75C12.2804 18 12.7891 17.7893 13.1642 17.4142C13.5393 17.0391 13.75 16.5304 13.75 16V4H1.75V16Z" fill="#FF5353" />
                   </svg>
@@ -179,6 +192,21 @@ export default function RequestedPhotoPage() {
           </div>
         ))}
       </div>
+
+
+
+      {/* modal component(DELETE_PHOTO_SHOW_MODAL) */}
+      <CustomModal
+        open={rejectPhotoModalOpen}
+        setIsOpen={setRejectPhotoModalOpen}
+        className={"p-0 max-h-[0vh]"}
+        bgColor={"bg-[#EF4444]"}
+        maxWidth={"md:!max-w-[30vw]"}>
+        <RejectPhotoModal
+          open={rejectPhotoModalOpen}
+          setIsOpen={setRejectPhotoModalOpen}
+        />
+      </CustomModal>
     </div>
   );
 }
