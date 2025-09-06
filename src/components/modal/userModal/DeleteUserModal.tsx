@@ -1,7 +1,10 @@
-
+"use client"
 
 import { Button } from "@/components/ui/button"
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import ExtractUserModal from "./ExtractUserModal";
+import CustomModal from "../CustomModal";
+
 
 interface DeleteUserModalProps {
   open: boolean;
@@ -10,6 +13,14 @@ interface DeleteUserModalProps {
 
 
 export default function DeleteUserModal({ open, setIsOpen }: DeleteUserModalProps) {
+  const [extractUserModalOpen, setExtractUserModalOpen] = useState(false);
+
+
+  const handleExtraUserModal = () => {
+    setExtractUserModalOpen(!extractUserModalOpen);
+    // setIsOpen(!open);
+  }
+
 
   return (
     <div className="rounded-2xl overflow-hidden  ">
@@ -35,7 +46,9 @@ export default function DeleteUserModal({ open, setIsOpen }: DeleteUserModalProp
           </div>
 
           <div className="py-4 flex justify-end w-full">
-            <button className="cursor-pointer h-[43px] border px-4 rounded-full flex items-center gap-2 font-semibold">
+            <button
+              onClick={handleExtraUserModal}
+              className="cursor-pointer h-[43px] border px-4 rounded-full flex items-center gap-2 font-semibold">
               <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 18.5C10.25 18.5 11.4207 18.2627 12.512 17.788C13.6033 17.3133 14.5533 16.6717 15.362 15.863C16.1707 15.0543 16.8123 14.1043 17.287 13.013C17.7617 11.9217 17.9993 10.7507 18 9.5C18.0007 8.24933 17.763 7.07867 17.287 5.988C16.811 4.89733 16.1697 3.94733 15.363 3.138C14.5563 2.32867 13.6063 1.687 12.513 1.213C11.4197 0.739 10.2487 0.501333 9 0.5V2.5C10.95 2.5 12.604 3.17933 13.962 4.538C15.32 5.89667 15.9993 7.55067 16 9.5C16.0007 11.4493 15.3213 13.1037 13.962 14.463C12.6027 15.8223 10.9487 16.5013 9 16.5V18.5ZM5 14.5L6.4 13.075L3.825 10.5H12V8.5H3.825L6.4 5.9L5 4.5L-1.90735e-06 9.5L5 14.5Z" fill="black" />
               </svg>
@@ -52,7 +65,7 @@ export default function DeleteUserModal({ open, setIsOpen }: DeleteUserModalProp
               example@gmail.com
             </div>
             <div className="w-full h-[50px] flex justify-between items-center px-3 border rounded-full">
-              Donated: 
+              Donated:
               <p>$ <span>0.00</span></p>
             </div>
 
@@ -74,6 +87,19 @@ export default function DeleteUserModal({ open, setIsOpen }: DeleteUserModalProp
 
         </div>
       </div>
+
+
+      {/* modal component(DELETE_USER) */}
+      <CustomModal
+        open={extractUserModalOpen}
+        setIsOpen={setExtractUserModalOpen}
+        className={"p-0 max-h-[0vh]"}
+        bgColor={"bg-[#004E8F]"}
+        maxWidth={"md:!max-w-[30vw]"}
+      >
+        <ExtractUserModal
+        />
+      </CustomModal>
     </div>
   )
 }

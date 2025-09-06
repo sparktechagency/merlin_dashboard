@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { CircleAlert, Eye, EyeOff } from "lucide-react";
 import { Controller, useFormContext } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+
+interface FromInputProps {
+  name: string;
+  type?: string;
+  eye?: boolean;
+  label?: ReactNode;
+  placeholder?: string;
+  stylelabel?: string;
+  className?: string;
+  icon?: ReactNode;
+}
 
 export function FromInput({
   name,
@@ -16,7 +27,7 @@ export function FromInput({
   stylelabel,
   className,
   icon,
-}) {
+}: FromInputProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const { control } = useFormContext();
 
