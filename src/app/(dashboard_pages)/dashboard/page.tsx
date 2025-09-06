@@ -2,6 +2,7 @@
 
 
 
+
 const DashboardHomePage = () => {
 
 
@@ -59,11 +60,11 @@ const DashboardHomePage = () => {
 
 
 
-        <div className="bg-[#fff] w-[60%] md:h-[650px] rounded-lg">
-          {/* <BookingChart /> */}
+        <div className="bg-[#fff] w-[60%] md:h-[600px] rounded-lg">
+     
         </div>
-        <div className="bg-[#fff] w-[40%] md:h-[650px] flex justify-center items-center rounded-lg ">
-          {/* <EarningChart /> */}
+        <div className="bg-[#fff] w-[40%] md:h-[600px] flex justify-center items-center rounded-lg ">
+        
         </div>
       </div>
     </div>
