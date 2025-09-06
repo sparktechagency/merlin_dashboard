@@ -1,18 +1,17 @@
 
-
 import { Button } from "@/components/ui/button"
 import { Dispatch, SetStateAction } from "react";
 
-interface DeleteUserModalProps {
+interface DeleteRegionalProps {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 
-export default function DeleteUserModal({ open, setIsOpen }: DeleteUserModalProps) {
+export default function DeleteRegional({ open, setIsOpen }: DeleteRegionalProps) {
 
   return (
-    <div className="rounded-2xl overflow-hidden  ">
+    <div className="rounded-2xl overflow-hidden ">
       <h1 className="text-center text-[24px] py-3 text-white">Delete admin ?</h1>
 
 

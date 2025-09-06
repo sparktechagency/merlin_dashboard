@@ -16,9 +16,10 @@ interface CustomModalProps {
     children: ReactNode;
     className?: string;
     maxWidth?: string;
+    bgColor?: string;
 }
 
-export default function CustomModal({ open, setIsOpen, children, className, maxWidth }:CustomModalProps) {
+export default function CustomModal({ open, setIsOpen, children, className, maxWidth,bgColor }: CustomModalProps) {
 
     const isHalfScreen = className?.includes("max-h-[30vh]");
     const maxHeightClass = isHalfScreen ? "overflow-y-scroll max-h-screen" : "";
@@ -28,13 +29,19 @@ export default function CustomModal({ open, setIsOpen, children, className, maxW
             <DialogTrigger asChild />
             <DialogContent
                 className={cn(
-                    "sm:max-w-[425px] bg-[#000000]  border-1 border-gray-800",
+                    `sm:max-w-[425px]   border-none rounded-2xl ${bgColor}`,
                     maxWidth,
-                    className?.replace(/max-h-\[[^\]]+\]/g, ""), 
+                    className?.replace(/max-h-\[[^\]]+\]/g, ""),
                     maxHeightClass
-                
+
                 )}
+                onOpenAutoFocus={(e) => {
+                    e.preventDefault(); // default cancel focus off
+                    document.getElementById("deleteBtn")?.focus();
+                }}
+            // showCloseButton={false} // CORSE ICON COLOR REMOVED
             >
+
                 <DialogTitle className="hidden"></DialogTitle>
                 <DialogDescription className=" hidden"></DialogDescription>
                 {children}

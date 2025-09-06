@@ -66,7 +66,18 @@ function DialogContent({
         {...props}
       >
         {children}
+
+        {/* MODAL CORSE ICON BACKGROUND COLOR AND BORDER COLOR REMOVE AND ADD */}
         {showCloseButton && (
+          <DialogPrimitive.Close
+            data-slot="dialog-close"
+            className="absolute top-2 right-3 flex items-center cursor-pointer justify-center focus:outline-none"
+          >
+            <XIcon className="text-white size-[28px]" />
+            <span className="sr-only">Close</span>
+          </DialogPrimitive.Close>
+        )}
+        {/* {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
             className="absolute top-2 right-3 flex items-center cursor-pointer justify-center rounded-full bg-[#E0E0E0] transition-colors w-7 h-7 focus:outline-none"
@@ -74,7 +85,9 @@ function DialogContent({
             <XIcon className="text-white size-[18px] bg-primary [.admin_&]:bg-primary1 [.admin_&]:text-blacks/80 rounded-full " />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
-        )}
+        )} */}
+
+
       </DialogPrimitive.Content>
     </DialogPortal>
   )
